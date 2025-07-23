@@ -7,6 +7,7 @@ import SignUpPage from "./pages/SignUpPage";
 import { Toaster } from "react-hot-toast";
 import { useAuth } from "./stores/useAuth";
 import { LoaderCircle } from "lucide-react";
+import Layout from "./components/Layout";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuth();
@@ -30,7 +31,7 @@ const App = () => {
       <div>
         <Toaster />
         <Routes>
-          <Route path="/">
+          <Route path="/" element={<Layout />}>
             <Route
               path="/"
               element={!authUser ? <WelcomePage /> : <HomePage />}

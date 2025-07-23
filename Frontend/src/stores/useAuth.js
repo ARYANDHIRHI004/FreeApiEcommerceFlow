@@ -44,10 +44,17 @@ export const useAuth = create((set) => ({
         toast.error(error.response.data.message || "Login failed");
         
       }
+    },
+    logoutUser: async () => {
+      set({isLoggingOut: true});
+      try {
+        const res = await axiosInstance.post('/users/logout');
+        set({isLoggingOut: false, authUser: null});
+        toast.success("Logout successful");
+      } catch (error) {
+        set({isLoggingOut: false});
+        toast.error(error.response.data.message || "Login failed");
+        
+      }
     }
-    
-
-
-
-    
 }))
