@@ -17,4 +17,14 @@ export const useProducts = create((set) => ({
         set({isLoadingProducts: false});
       }
     },
+    getProductsById: async(productId) => {
+      try {
+        set({isLoadingProductById: true});
+        const res = await axiosInstance.get(`/ecommerce/products/${productId}`);
+        set({product: res.data.data, isLoadingProductById: false});
+      } catch (error) {
+        toast.error(error.response.data.message || "Failed to fetch products");
+        set({isLoadingProductById: false});
+      }
+    },
 }))

@@ -1,6 +1,6 @@
 import { useCategories } from "@/stores/useCategories";
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
@@ -39,7 +39,7 @@ const CategoryPage = () => {
           <div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-5">
               {productByCategory?.products.map((product) => (
-                <div key={product._id} className="border p-4 rounded-lg">
+                <Link to={`/products/${product._id}`} key={product._id} className="border p-4 rounded-lg">
                   <img src={product.mainImage.url} alt="image" />
                   <h3 className="text-lg font-semibold">{product.name}</h3>
                   <p>{product.description}</p>
@@ -51,7 +51,7 @@ const CategoryPage = () => {
                   >
                     {product.stock} Left
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
