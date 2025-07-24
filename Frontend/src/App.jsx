@@ -8,6 +8,7 @@ import { Toaster } from "react-hot-toast";
 import { useAuth } from "./stores/useAuth";
 import { LoaderCircle } from "lucide-react";
 import Layout from "./components/Layout";
+import CategoryPage from "./pages/CategoryPage";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuth();
@@ -43,6 +44,10 @@ const App = () => {
             <Route
               path="/signup"
               element={!authUser ? <SignUpPage /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/categories/:categoryId"
+              element={authUser ? <CategoryPage /> : <Navigate to={"/"} />}
             />
           </Route>
         </Routes>
