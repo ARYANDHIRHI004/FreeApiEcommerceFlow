@@ -40,7 +40,7 @@ const ProductPage = () => {
           )}
         </div>
         <div className="flex flex-col gap-4 w-1/4  ">
-          <Link to={"/"} className="w-50">
+          <Link to={`/products/${productId}/order`} className="w-50">
             <Button variant={"outline"} className="text-lg h-12 w-80">
               Buy Now
             </Button>

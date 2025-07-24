@@ -10,6 +10,7 @@ import { LoaderCircle } from "lucide-react";
 import Layout from "./components/Layout";
 import CategoryPage from "./pages/CategoryPage";
 import ProductPage from "./pages/ProductPage";
+import OrderPage from "./pages/OrderPage";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuth();
@@ -53,6 +54,10 @@ const App = () => {
             <Route
               path="/products/:productId"
               element={authUser ? <ProductPage /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/products/:productId/order"
+              element={authUser ? <OrderPage /> : <Navigate to={"/"} />}
             />
           </Route>
         </Routes>
